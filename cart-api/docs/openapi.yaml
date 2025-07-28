@@ -1,0 +1,61 @@
+openapi: 3.0.0
+info:
+  title: Siroko Cart API
+  version: '1.0'
+paths:
+  /cart:
+    get:
+      summary: Obtener el carrito
+      responses:
+        '200':
+          description: Estado del carrito
+  /cart/items:
+    post:
+      summary: A\u00F1adir producto al carrito
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                product_id:
+                  type: string
+                quantity:
+                  type: integer
+      responses:
+        '200': {description: Item added}
+  /cart/items/{productId}:
+    put:
+      summary: Actualizar cantidad de producto
+      parameters:
+        - in: path
+          name: productId
+          required: true
+          schema: {type: string}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                quantity:
+                  type: integer
+      responses:
+        '200': {description: Updated}
+    delete:
+      summary: Eliminar producto del carrito
+      parameters:
+        - in: path
+          name: productId
+          required: true
+          schema: {type: string}
+      responses:
+        '200': {description: Deleted}
+  /checkout:
+    post:
+      summary: Procesar el pago y crear la orden
+      responses:
+        '200':
+          description: Orden creada
