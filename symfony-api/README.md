@@ -10,8 +10,18 @@ This is a minimal example of an API using a lightweight Symfony 6 setup. It expo
 
 ## Running
 
-1. Install dependencies (requires internet access): `composer install`
-2. Start the built-in PHP server:
+The project targets PHP 8, so it is easiest to run it via Docker.
+
+1. Build and start the container with docker compose:
+   ```bash
+   docker-compose up
+   ```
+   The API will be available on `http://localhost:8080`.
+2. If you prefer to run it locally, first install the dependencies *(requires internet access)*:
+   ```bash
+   composer install
+   ```
+   Then start the built-in PHP server:
    ```bash
    php -S localhost:8080 -t public
    ```
