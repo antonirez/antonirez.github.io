@@ -1,0 +1,94 @@
+openapi: 3.0.0
+info:
+  title: Siroko Cart API
+  version: '1.0'
+paths:
+  /api/products:
+    get:
+      summary: Listar productos disponibles
+      responses:
+        '200':
+          description: Lista de productos
+    post:
+      summary: Crear un producto
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                name:
+                  type: string
+                price:
+                  type: number
+      responses:
+        '201':
+          description: Producto creado
+  /api/cart:
+    get:
+      summary: Obtener el carrito
+      responses:
+        '200':
+          description: Carrito actual
+  /api/cart/items:
+    post:
+      summary: Añadir producto al carrito
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                name:
+                  type: string
+                price:
+                  type: number
+                quantity:
+                  type: integer
+      responses:
+        '200':
+          description: Producto añadido
+  /api/cart/items/{id}:
+    put:
+      summary: Actualizar cantidad
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                quantity:
+                  type: integer
+      responses:
+        '200':
+          description: Actualizado
+    delete:
+      summary: Eliminar item
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Eliminado
+  /api/cart/checkout:
+    post:
+      summary: Confirmar compra
+      responses:
+        '200':
+          description: Orden creada
