@@ -24,7 +24,6 @@
     </testsuites>
 
     <source ignoreSuppressionOfDeprecations="true"
-            ignoreIndirectDeprecations="true"
             restrictNotices="true"
             restrictWarnings="true"
     >
@@ -32,9 +31,6 @@
             <directory>src</directory>
         </include>
 
-        <deprecationTrigger>
-            <function>trigger_deprecation</function>
-        </deprecationTrigger>
     </source>
 
     <extensions>
