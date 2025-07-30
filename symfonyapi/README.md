@@ -37,6 +37,26 @@ docker-compose up -d
 
 La aplicación estará disponible en `http://localhost:8080`.
 
+## Despliegue y funcionamiento
+
+1. Clona este repositorio y accede al directorio `symfonyapi`.
+2. Crea un fichero `.env.local` si necesitas personalizar variables de entorno.
+3. Levanta los contenedores (la primera vez usa `--build` para crear la imagen):
+
+```bash
+docker-compose up --build -d
+```
+
+Esto instalará las dependencias con Composer y expondrá la API en el puerto `8080`.
+
+Puedes entrar en el contenedor para ejecutar comandos de Symfony:
+
+```bash
+docker-compose exec app php bin/console about
+```
+
+Los datos del carrito y las órdenes se almacenan en el directorio `var/` dentro del contenedor.
+
 ## Ejecutar tests
 
 ```bash
